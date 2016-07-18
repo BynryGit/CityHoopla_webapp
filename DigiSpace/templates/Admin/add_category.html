@@ -1,0 +1,1179 @@
+    <!DOCTYPE html>
+    <!-- 
+    Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+    Version: 4.5.3
+    Author: KeenThemes
+    Website: http://www.keenthemes.com/
+    Contact: support@keenthemes.com
+    Follow: www.twitter.com/keenthemes
+    Like: www.facebook.com/keenthemes
+    Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+    License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+    -->
+    <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+    <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+    <!--[if !IE]><!-->
+    <html lang="en">
+        <!--<![endif]-->
+        <!-- BEGIN HEAD -->
+    {% load staticfiles %}
+        <head>
+            <meta charset="utf-8" />
+            <title>City Hoopla | Custom Dropdowns</title>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta content="width=device-width, initial-scale=1" name="viewport" />
+            <meta content="" name="description" />
+            <meta content="" name="author" />
+            <!-- BEGIN GLOBAL MANDATORY STYLES -->
+            <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/uniform/css/uniform.default.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css" />
+            <!-- END GLOBAL MANDATORY STYLES -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <link href="{% static 'assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/jquery-multi-select/css/multi-select.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+               <link href="{% static 'assets/global/plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+            <!-- END PAGE LEVEL PLUGINS -->
+                    <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <link href="{% static 'assets/global/plugins/datatables/datatables.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css' %}" rel="stylesheet" type="text/css" />
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL STYLES -->
+            <link href="{% static 'assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css" />
+            <link href="{% static 'assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css" />
+            <!-- END THEME GLOBAL STYLES -->
+            <!-- BEGIN THEME LAYOUT STYLES -->
+            <link href="{% static 'assets/layouts/layout2/css/layout.min.css' %}" rel="stylesheet" type="text/css" />
+            <link href="{% static 'assets/layouts/layout2/css/themes/blue.min.css' %}" rel="stylesheet" type="text/css" id="style_color" />
+            <link href="{% static 'assets/layouts/layout2/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+            <!-- END THEME LAYOUT STYLES -->
+            <link rel="shortcut icon" href="favicon.ico" /> </head>
+            
+        <!-- END HEAD -->
+        <style type="text/css">
+    		div.dataTables_wrapper div.dataTables_info {
+        padding-top: 8px;
+        white-space: nowrap;
+        display: none;
+    }
+    div.dataTables_wrapper div.dataTables_length label {
+        font-weight: normal;
+        text-align: left;
+        white-space: nowrap;
+        display: none;
+    }
+
+    div.dataTables_filter label {
+        font-weight: normal;
+        white-space: nowrap;
+        text-align: left;
+        display: none;
+    }
+    
+    #processing{
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    margin: 0px auto;
+    z-index: 9999;
+    background-color: #FFF;
+    background-image: none;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-size: inherit;
+    opacity: 0.5;
+}
+
+#loading{
+    width: 36%;
+    height: 22px;
+    position: absolute;
+    top: 26%;
+    left: 32%;
+    margin: -28px 0px 0px -25px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+}
+ 
+	.addcategory_input{
+	width: 88%;
+	display: inline;
+	margin-bottom: 0px;
+} 
+
+.page-header.navbar .page-logo .logo-default {
+    margin: 2px 0 0;
+    width: 105px;
+    background: rgba(255, 255, 255, 0.48);
+}
+
+.page-header.navbar .page-logo {
+  /* fallback */
+  background-color: #0d67e6;
+  background-image: url(images/linear_bg_1.png);
+  background-repeat: repeat-y;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, left top, right top, from(#0d67e6), to(#11ca9a));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, #0d67e6, #11ca9a);
+}
+
+@media (max-width: 767px){
+.page-header.navbar {
+     background-color: #0d67e6;
+  background-image: url(images/linear_bg_1.png);
+  background-repeat: repeat-y;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, left top, right top, from(#0d67e6), to(#11ca9a));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(left, #0d67e6, #11ca9a);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, #0d67e6, #11ca9a);
+}
+}   
+	 
+ 
+    	</style>
+
+         <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+	         <div id="processing" style="display:none;">
+	                <div id="loading">
+	                    <img  src="{% static 'assets/loading-bars.gif' %}" style="height : 100px;">
+	                </div>  
+	            </div>
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                     <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner ">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <a href="/dashboard/">
+                             <img src="{% static 'assets/layouts/layout2/img/City_Hoopla_Logo.png' %}" alt="logo" class="logo-default" /> </a>
+                        <div class="menu-toggler sidebar-toggler">
+                            <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                        </div>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN PAGE TOP -->
+                    <div class="page-top">
+                        <!-- BEGIN TOP NAVIGATION MENU -->
+                        <div class="top-menu">
+                            <ul class="nav navbar-nav pull-right">
+                                <!-- BEGIN NOTIFICATION DROPDOWN -->
+                                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                                <!-- <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <i class="icon-bell"></i>
+                                        <span class="badge badge-default"> 7 </span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="external">
+                                            <h3>
+                                                <span class="bold">12 pending</span> notifications</h3>
+                                            <a href="page_user_profile_1.html">view all</a>
+                                        </li>
+                                        <li>
+                                            <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">just now</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-success">
+                                                                <i class="fa fa-plus"></i>
+                                                            </span> New user registered. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">3 mins</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Server #12 overloaded. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">10 mins</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-warning">
+                                                                <i class="fa fa-bell-o"></i>
+                                                            </span> Server #2 not responding. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">14 hrs</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-info">
+                                                                <i class="fa fa-bullhorn"></i>
+                                                            </span> Application error. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">2 days</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Database overloaded 68%. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">3 days</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> A user IP blocked. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">4 days</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-warning">
+                                                                <i class="fa fa-bell-o"></i>
+                                                            </span> Storage Server #4 not responding dfdfdfd. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">5 days</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-info">
+                                                                <i class="fa fa-bullhorn"></i>
+                                                            </span> System Error. </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="time">9 days</span>
+                                                        <span class="details">
+                                                            <span class="label label-sm label-icon label-danger">
+                                                                <i class="fa fa-bolt"></i>
+                                                            </span> Storage server failed. </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li> -->
+                                <!-- END NOTIFICATION DROPDOWN -->   
+                                <!-- BEGIN USER LOGIN DROPDOWN -->
+                                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                                <li class="dropdown dropdown-user">
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                       <!--  <img alt="" class="img-circle" src="{% static 'assets/layouts/layout2/img/avatar3_small.jpg' %}" /> -->
+                                        <span class="username username-hide-on-mobile">{{ username }}</span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-default">
+                                        <!-- <li>
+                                            <a href="page_user_profile_1.html">
+                                                <i class="icon-user"></i> My Profile </a>
+                                        </li> -->
+                                        <li>
+                                            <a href="/log-out/">
+                                                <i class="icon-key"></i> Log Out </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- END USER LOGIN DROPDOWN -->
+                            </ul>
+                        </div>
+                        <!-- END TOP NAVIGATION MENU -->
+                    </div>
+                    <!-- END PAGE TOP -->
+                </div>
+                <!-- END HEADER INNER -->
+            </div>
+            <!-- END HEADER -->
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN SIDEBAR -->
+                <div class="page-sidebar-wrapper">
+                    <!-- END SIDEBAR -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <div class="page-sidebar navbar-collapse collapse">
+                        <!-- BEGIN SIDEBAR MENU -->
+                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                            <li class="nav-item ">
+                                <a href="/dashboard/" class="nav-link nav-toggle">
+                                    <i class="icon-home"></i>
+                                    <span class="title">Dashboard</span>
+                                    <span class="selected"></span>
+                                    <span class="arrow open"></span>
+                                </a>                 
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-users"></i>
+                                    <span class="title">Customers </span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item start ">
+                                        <a href="/subscriber/" class="nav-link ">
+                                            <i class="icon-user"></i>
+                                            <span class="title">Subscribers</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start ">
+                                        <a href="/consumer/" class="nav-link ">
+                                            <i class="icon-user"></i>
+                                            <span class="title">Consumers</span>
+                                            <span class="badge badge-success"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="/user/" class="nav-link nav-toggle">
+                                            <i class="icon-user"></i>
+                                    <span class="title">Admin </span>
+                                    <span class="arrow"></span>
+                                </a>   
+                            </li>
+                             <li class="nav-item  ">
+                                <a href="/rate-card/" class="nav-link nav-toggle">
+                                    <i class="icon-settings"></i>
+                                    <span class="title">Rate Card </span>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="/notification/" class="nav-link nav-toggle">
+                                    <i class="icon-settings"></i>
+                                    <span class="title">Notifications</span>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="/reference-data/" class="nav-link nav-toggle">
+                                    <i class="icon-bulb"></i>
+                                    <span class="title">Reference Data </span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item start  ">
+                                        <a href="/reference-data/" class="nav-link ">
+                                        <i class="icon-bar-chart"></i>
+                                            <span class="title"> City </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start active">
+                                        <a href="/category/" class="nav-link ">
+                                         		<i class="icon-bulb"></i>
+                                            <span class="title"> Category </span>
+                                            <span class="badge badge-success"></span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item start ">
+                                        <a href="/user-role/" class="nav-link ">
+                                        <i class="icon-user"></i>
+                                            <span class="title"> User Role </span>
+                                            <span class="badge badge-success"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- END SIDEBAR MENU -->
+                    </div>
+                    <!-- END SIDEBAR -->
+                </div>
+                <!-- END SIDEBAR -->
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                    		<h3 class="page-title"> Reference Data
+                        </h3>
+                        <!-- BEGIN PAGE HEADER-->
+                       <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                               
+                                <li>
+                                    <span>Reference Data</span>
+                                    <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>
+                                    <a href="/category/">Category</a>
+                                     <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>
+                                    <span>Add</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- END PAGE HEADER-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="portlet light  ">
+    										
+      
+                                    
+                                    
+                                    <div class="portlet-body form" >
+                                        <!-- BEGIN FORM-->
+                                        <div class="row">
+                                        	<div class="col-lg-12">
+                                        	 <div class="portlet-body">
+    				                              
+    													 <div class="form-wizard">
+                                            <div class="form-body">
+                                             <!-- Start of tabs -->                                
+                                            
+                  					<div class="tab-content" >  
+    									  <div id="tab1" class="tab-pane fade active in"> 
+
+    														<form id="cityform" role="form" enctype="multipart/form-data" name="city-form",method="POST">
+                                                    {% csrf_token %}
+                                              <div class="row">
+                                                <div class="col-lg-6">
+                                                	<div class="form-group">
+                                                    <label class="control-label ">Category
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                      <input type="text" name="city_name" id="category_name"  value="" class="form-control" /> 
+                                                		<label class="error" id="cat_error" style="color:red; display:none;"></label>
+                                                </div>
+                                                </div>       
+                                           </div>
+												<div class="row" id="city-sequence">
+														<div class="row" style="margin-left:0px;">
+                                            <div class="col-lg-6">
+                                            	<div class="form-group">
+                                                <label class="control-label ">City
+                                                </label>
+          														<select  name="employer"  class="city city_category form-control" > 
+							 										<option value="">Select City</option>                        
+                     										 {% for city in city_list %}	
+                       										 <option value="{{city.city_place_id}}">{{city.city_id.city_name}}</option>
+                      										  {% endfor %}
+                									     </select>
+                									     <label class="error" style="color:red; display:none;"></label>  
+															 <!--  <label class="error" id="state_error" style="color:red; display:none;"></label>      -->                                      
+                                            </div>
+                                        
+                                            </div>
+                                            <div class="col-lg-5">
+                                            	<div class="form-group">
+                                                <label class="control-label ">Sequence
+                                                </label>
+          														<select name="sequence" class="sequence_category form-control" > 
+							 										<option value="">Select Sequence</option>                        
+                       										 <option value="1">1</option>
+                       										 <option value="2">2</option>
+                       										 <option value="3">3</option>
+                       										 <option value="4">4</option>
+                       										 <option value="5">5</option>
+                       										 
+                									     </select>
+                									     <label class="error" style="color:red; display:none;"></label>  
+															  <!-- <label class="error" id="state_error" style="color:red; display:none;"></label>  -->                                          
+
+                                            </div>
+                                            </div>
+														<div class="col-lg-1" style="margin-top: 30px;">
+                                           <a class="fa fa-plus-circle fa-lg add-city"  ></a> 
+														</div>
+                                       </div>
+												</div>
+                                             <label class="error" id="city_error" style="color:red; display:none;"></label>  
+                                                <div class="row">
+                                                <div class="col-md-4"><label class="control-label ">Would you like to add Sub-Category?</label></div> 
+                                                    <div class="col-md-3">
+      
+                                                       <input type="button" id="save_city" class="btn green" onclick="show_div()" value="Yes"  >
+                                                    </div>
+                                                </div>
+                                                
+    															
+                                              <div id="category-phone1" class="row category-phone1" style="display: block; margin-top: 15px;">
+                                        
+                                                
+    	                                          
+                                                <div class="col-md-4">
+    	                                            <!-- <div class="form-group"> -->
+    	                                                <label class="control-label ">Level1 Sub-Category
+    	                                                </label>
+    	                                                  <input type="text" style="display : inline; width : 90%;" onkeypress="return validateFloatKeyPresss(this,event);" name="phone_no" id="phone_no1" class="form-control addcategory_input phone_number" /></input>
+    	                                                  <label class="error" style="color:red; display:none;"></label> 
+    	                                               <a class="fa fa-plus-circle fa-lg add-category-and-phone1" style="margin-left: 10px;display : inline;"  style="margin-top:33px;" ></a> 
+    	                                   
+    	                                           <!--  </div> -->
+																</div>
+     														</div>
+     													
+     														<div id="category-phone2" class="row category-phone2" style="display: block; margin-top: 15px;">
+                                       
+                                                <div class="col-md-4">
+<!--     	                                             <div class="form-group"> -->
+    	                                                <label class="control-label ">Level2 Sub-Category
+    	                                                </label>
+    	                                                  <input type="text" style="display : inline; width : 90%;" onkeypress="return validateFloatKeyPresss(this,event);" name="phone_no" id="phone_no2" class="form-control addcategory_input phone_number" /></input>
+    	                                                  <label class="error" style="color:red; display:none;"></label> 
+    	                                               <a class="fa fa-plus-circle fa-lg add-category-and-phone2" style="margin-left: 10px;display : inline;"  style="margin-top:33px;" ></a> 
+    	                                   
+<!--     	                                            </div> -->
+														</div>
+     														</div>
+     														
+     																<div id="category-phone3" class="row category-phone3" style="display: block; margin-top: 15px;">
+                                        
+                                                
+                                                <div class="col-md-4">
+    	                                          
+    	                                                <label class="control-label ">Level3 Sub-Category
+    	                                                </label>
+    	                                                  <input type="text" style="display : inline; width : 90%;" onkeypress="return validateFloatKeyPresss(this,event);" name="phone_no" id="phone_no3" class="form-control addcategory_input phone_number" /></input>
+    	                                                  <label class="error" style="color:red; display:none;"></label> 
+    	                                               <a class="fa fa-plus-circle fa-lg add-category-and-phone3" style="margin-left: 10px;display : inline;"  style="margin-top:33px;" ></a> 
+
+    	                                            </div>
+
+     														</div>
+     														
+     														<div id="category-phone4" class="row category-phone4" style="display: block; margin-top: 15px;">
+                                        
+                                                
+                                                <div class="col-md-4">
+
+    	                                                <label class="control-label ">Level4 Sub-Category
+    	                                                </label>
+    	                                                  <input type="text" style="display : inline; width : 90%;" onkeypress="return validateFloatKeyPresss(this,event);" name="phone_no" id="phone_no4" class="form-control addcategory_input phone_number" /></input>
+    	                                                  <label class="error" style="color:red; display:none;"></label> 
+    	                                               <a class="fa fa-plus-circle fa-lg add-category-and-phone4" style="margin-left: 10px;display : inline;"  style="margin-top:33px;" ></a> 
+    	                                   
+
+																 </div>
+     														</div>
+     												
+     														<div id="category-phone5" class="row category-phone5" style="display: block; margin-top: 15px;">
+                                        
+                                                
+                                                <div class="col-md-4">
+
+    	                                                <label class="control-label ">Level5 Sub-Category
+    	                                                </label>
+    	                                                  <input type="text" style="display : inline; width : 90%;" onkeypress="return validateFloatKeyPresss(this,event);" name="phone_no" id="phone_no5" class="form-control addcategory_input phone_number" /></input>
+    	                                                  <label class="error" style="color:red; display:none;"></label> 
+    	                                               <a class="fa fa-plus-circle fa-lg add-category-and-phone5" style="margin-left: 10px;display : inline;"  style="margin-top:33px;" ></a> 
+
+    	                                            </div>
+
+     												</div>
+     														<br>
+     														  <input type="button" id="add_cat" onclick="add_subcategory()" class="btn green" value="">
+                                                              <br><br>
+                                                <label class="error" id="subcat_error" style="color:red;display: none;">Please add </label>
+
+                                                 <div class="form-actions text-right">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                     <a href="/category/"> <input type="button" class="btn default" data-dismiss="modal" value="Cancel"></input></a>
+                                                    <input id="add_category" value="Save" type="button"  class="btn green">
+                                                    </div>
+                                                </div>
+                                            </div>                                  
+                                              </form>
+                                              </div>  
+                                              </div>
+                                              
+                                              
+                                              
+                                            </div><!-- End Of tab content -->
+                                            </div>
+                                            </div>
+                                           	</div><!-- End of second tab -->
+                                     	</div>
+                                       <!--</form>  -->    
+                                       	 </div>
+                                          </div>
+                                        <!-- END FORM-->
+                                    </div>
+                                </div>
+                                <!-- END PORTLET-->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+            </div>
+           </div> 
+            <!-- END CONTAINER -->
+            <!-- /.modal -->
+                 
+              
+              
+          	<!-- /.modal -->
+            <!-- BEGIN FOOTER -->
+            <div class="page-footer">
+                <div class="page-footer-inner"> 2016 &copy; DigiSpace.
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+            
+
+    <div style="overflow-y:hidden;" id="affiliate-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 374px;">
+
+                <!-- Modal content-->
+                <div class="modal-content">   
+                    <div class="modal-header">
+                    <img style="width: 100px; height: 29px; margin-top: -11px; margin-left: 130px;" src="/static/assets/layouts/layout2/img/City_Hoopla_Logo.png" alt="logo" class="logo-default">
+                      <!-- <a href="/category/">  <button type="button" class="close" data-dismiss="modal">&times;</button></a> -->
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 style="text-align:center;">Category added successfully</h4>
+                        </div>
+                            </div>
+                                     
+                            </div>
+                    
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-2">
+                               <a href="/category/"> <input type="submit" value="OK"
+                                       class="btn btn-primary" id="btn-loading-demo"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>         
+        
+    <div style="overflow-y:hidden;" id="error-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 416px;">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+			       				<img style="width: 100px; height: 29px; margin-top: -11px; margin-left: 146px;" src="/static/assets/layouts/layout2/img/City_Hoopla_Logo.png" alt="logo" class="logo-default">
+			         			<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+			      			 </div>   
+                    <div class="modal-body">
+                        <div class="row">
+                            <div  class="col-lg-12">
+											<h4 class="text-center" id="error-message"></h4>
+                        </div>
+                            </div>        
+                            </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-2">
+                              <input data-dismiss="modal" type="submit" value="OK"
+                                       class="btn btn-primary" id="btn-loading-demo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>    
+            
+            <!-- END FOOTER -->
+            <!--[if lt IE 9]>
+    <script src="{% static 'assets/global/plugins/respond.min.js"></script>
+    <script src="{% static 'assets/global/plugins/excanvas.min.js"></script> 
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+            <script src="{% static 'assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/uniform/jquery.uniform.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="{% static 'assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/select2/js/select2.full.min.js' %}" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+                    <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="{% static 'assets/global/plugins/select2/js/select2.full.min.js' %}" type="text/javascript"></script>
+             <script src="{% static 'assets/pages/scripts/components-select2.min.js' %}" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+            <script src="{% static 'assets/global/scripts/app.min.js' %}" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL SCRIPTS -->
+            <script src="{% static 'assets/pages/scripts/components-multi-select.min.js' %}" type="text/javascript"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+            <script src="{% static 'assets/global/scripts/datatable.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/datatables/datatables.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js' %}" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+              <!-- BEGIN PAGE LEVEL SCRIPTS -->
+            <script src="{% static 'assets/pages/scripts/table-datatables-managed.min.js' %}" type="text/javascript"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+            <script src="{% static 'assets/layouts/layout2/scripts/layout.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/layouts/layout2/scripts/demo.min.js' %}" type="text/javascript"></script>
+            <script src="{% static 'assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
+            <!-- END THEME LAYOUT SCRIPTS -->
+            <!-- END THEME LAYOUT SCRIPTS -->
+            
+             <script src="{%static 'assets/pages/scripts/dropzone1.js' %}" type="text/javascript"></script>
+            <script>
+            
+    $(document).ready(function(){
+     $("#category-phone1").hide();
+     $("#category-phone2").hide();
+     $("#category-phone3").hide();
+     $("#category-phone4").hide();
+     $("#category-phone5").hide();
+  		$(".city").select2();
+  		$(".sequence_category").select2(); 
+      $("#add_cat").hide();
+      $("#city").select2();                 
+      });
+
+    i = 2;
+    j = 0;
+    var value = 'Add level' +i + ' Sub-Category';
+    $("#add_cat").val(value);
+
+    function add_subcategory()
+    {
+    i = i + 1;
+    j = i-1;
+    if(i<=6)
+    {
+    if(i==6)
+    {
+      $("#add_cat").hide();
+
+    }
+     $("#category-phone"+j).show();
+    	var value = 'Add level' +i + ' Sub-Category';
+    	$("#add_cat").val(value);
+     
+     
+    }
+    }
+
+    function checkCategory()
+    {
+    		category = $("#category_name").val();
+    		var namePattern = /[a-zA-Z0-9\-\s]+$/; 
+    		
+	    if(namePattern.test(category))
+	    {
+	    	if($.isNumeric($("#category_name").val()))
+	    	{	
+
+				$("#cat_error").css("display", "block");
+	       	$("#cat_error").html("Category should contain alphanumeric only");
+	       	return false;    	
+	    	}
+	    	
+	    	else{
+
+		    $("#cat_error").css("display", "none");
+		    return true;
+		    }
+	    }
+	    else if (category=="")
+	    {
+	    	$("#cat_error").css("display", "block");
+	       $("#cat_error").html("Please enter category");
+	       return false;
+	    }
+	    else{
+	        	$("#cat_error").css("display", "block");
+	       	$("#cat_error").html("Category should contain alphanumeric only");
+	       	return false;
+
+	    }
+    }
+
+// for adding multiple cities
+var appendCity = "<div class='row' style='margin-left:0px;'><div class='col-lg-6'><label class='control-label' >City</label><select  name='city' class='city_category city_category1  form-control' ><option value=''>Select City</option></select><label class='error' style='color:red; display:none;'></div><div class='col-lg-5'><div class='form-group'><label class='control-label'>Sequence</label><select  name='sequence' class='sequence_category form-control'><option value=''>Select Sequence</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><label class='error' style='color:red; display:none;'></div></div></div>";
+
+$(".add-city").click(function(){
+	
+	$(appendCity).appendTo('#city-sequence');
+	  $(".city_category1").select2();
+	   $(".sequence_category").select2(); 
+	   getCity();
+});
+
+    function show_div()
+    {
+    if(checkCategory())
+    {
+     $("#category-phone1").show();
+      $("#add_cat").show();
+    }
+    }
+    var appendCategory = "<div class='col-md-4'><label class='control-label' >&nbsp;</label><input type='text' onkeypress='return validateFloatKeyPresss(this,event);' name=''  class='form-control phone_number' /><label class='error' style='color:red; display:none;'></label></div>";
+              	
+              		$(".add-category-and-phone1").click(function(){
+    					$(appendCategory).appendTo('#category-phone1');
+              		});
+    					$(".add-category-and-phone2").click(function(){
+    						$(appendCategory).appendTo('#category-phone2');
+    	          	});
+    	          	$(".add-category-and-phone3").click(function(){
+    						$(appendCategory).appendTo('#category-phone3');
+    	          	});
+    	          	$(".add-category-and-phone4").click(function(){
+    						$(appendCategory).appendTo('#category-phone4');
+    	          	});
+    	          	$(".add-category-and-phone5").click(function(){
+    						$(appendCategory).appendTo('#category-phone5');
+    	          	});
+
+    $("#add_category").click(function(event)  {
+    	     event.preventDefault();  
+    	   		
+    //alert($(".category-phone1").children('div').find('.phone_number').val());
+    	if(checkCategory()){	
+    	
+        
+	 	var city = [];
+        $.each($(".city_category"), function(){            
+            city.push($(this).val());
+        });
+
+	 	var sequence = [];
+        $.each($(".sequence_category"), function(){            
+            sequence.push($(this).val());
+        });
+        
+        var subcategory1 = []
+        $(".category-phone1").children('div').find('.phone_number').each(function () {
+            if($(this).val()!="")
+        	  subcategory1.push($(this).val());
+      	});
+      	
+    	var subcategory2 = []
+        $(".category-phone2").children('div').find('.phone_number').each(function () {
+            if($(this).val()!="")
+        	   subcategory2.push($(this).val());
+      	});
+      	var subcategory3 = []
+        $(".category-phone3").children('div').find('.phone_number').each(function () {
+            if($(this).val()!="")
+        	  subcategory3.push($(this).val());
+      	});
+
+      	var subcategory4 = []
+        $(".category-phone4").children('div').find('.phone_number').each(function () {
+            if($(this).val()!="")
+        	  subcategory4.push($(this).val());
+      	});  	
+
+    	var subcategory5 = []
+        $(".category-phone5").children('div').find('.phone_number').each(function () {
+            if($(this).val()!="")
+        	   subcategory5.push($(this).val());
+      	});
+            
+            if(check_subcategory(subcategory1,subcategory2,subcategory3,subcategory4,subcategory5)){
+            	if ( validateData()){
+            	if(checkDuplicates()){
+      			$.ajax({
+      				  
+    				  type	: "POST",
+    				   url : '/save-category/',
+ 					data : {'sequence':sequence,'category_name': $("#category_name").val(),'city':city,'subcategory1':subcategory1,'subcategory2':subcategory2,'subcategory3':subcategory3,'subcategory4':subcategory4,'subcategory5':subcategory5},
+    				                       
+                  success: function (response) {
+    	              if(response.success=='true'){
+    	           	  		$("#affiliate-modal").modal('show');
+    	              	}
+    	      			if (response.success == "false") {
+    	      			$('#error-message').text(response.message)
+    							$("#error-modal").modal('show');                    
+    	       			}							                        		                      		                       		
+                   },
+                   beforeSend: function () {
+
+                		$("#processing").css('display','block');
+
+            		},
+            		complete: function () {
+                		$("#processing").css('display','none');
+            		},
+                   error : function(response){
+                      	alert("_Error");
+                	}              
+               });  
+		}
+		}
+      }
+  }
+    });
+
+function getCity() {
+		  //alert('competencty');	
+            $.ajax({
+                type: 'GET',
+                url: '/get_city/',
+                success: function (response) {
+                var divs = $(".city_category1");
+					 var lastchild = divs[divs.length - 1];
+						$(lastchild).val("");
+                    $.each(response.city_list, function (index, item) {
+                        $(lastchild).append(item);
+                    });
+                    
+                },
+                error: function (response) {
+                    alert("Error!");
+                },
+
+            });
+        }
+
+  function check_subcategory (cat1,cat2,cat3,cat4,cat5) {
+     
+      var length1 = cat1.length;
+      var length2 = cat2.length;
+      var length3 = cat3.length;
+      var length4 = cat4.length;
+      var length5 = cat5.length;
+      var status = true;
+      var msg = "";
+      var msg1 = "Please fill level1 Sub-Category first";
+      var msg2 = "Please fill level2 Sub-Category first";
+      var msg3 = "Please fill level3 Sub-Category first";
+      var msg4 = "Please fill level4 Sub-Category first";
+      var sum = length1+length2+length3+length4+length5;
+      if(sum==0){
+        status = true;
+      }
+      else{
+          if(length1>0 && length2==0 && length3==0 && length4==0 && length5==0){
+            status = true;
+
+          }
+          if(length1 == 0 && (length2 > 0 | length3 > 0 | length4 > 0 | length5 > 0)){
+            status = false;
+            msg = msg1;
+          }
+          if(length2 > 0 && length1 == 0 ){
+            status = false;
+            msg = msg1;
+          }
+         if(length3 > 0 && (length1 == 0 || length2 ==0)){
+            status = false;
+            if(length1==0){
+                msg = msg1;
+            }
+            if(length2==0){
+                msg = msg2;
+            }
+          }
+
+         if(length4 > 0 && (length1 == 0 || length2 ==0 || length3 == 0)){
+            status = false;
+            if(length1==0){
+                msg = msg1;
+            }
+            if(length2==0){
+                msg = msg2;
+            }
+            if(length3==0){
+                msg = msg3;
+            }
+            
+          }
+
+         if(length5 > 0 && (length1 == 0 || length2 ==0 || length3 == 0 || length4 == 0)){
+            status = false;
+            if(length1==0){
+                msg = msg1;
+            }
+            if(length2==0){
+                msg = msg2;
+            }
+            if(length3==0){
+                msg = msg3;
+            }
+            if(length4==0){
+                msg = msg4;
+            }
+            
+          }
+
+      }
+      if(status){
+            $("#subcat_error").css('display','none');
+      }
+      else{
+        $("#subcat_error").text(msg);
+            $("#subcat_error").css('display','block');
+      }
+
+      return status;
+  }
+  
+  function validateData(){
+			if(checkSequence(".sequence_category") & checkCity(".city_category") )
+			{
+					return true;
+			}		
+				return false;	
+		}
+  
+  function checkSequence(sequence_category){
+				var isValid = true;		
+				
+			   $(sequence_category).each(function( index ) {
+			   
+			  			
+						var sequence_category = $(this).val();		
+						var parentvalue = $(this).parent().parent().prev('div').find('select').val() ;				
+									if( parentvalue != "") {  
+									
+							 	  		if(sequence_category ==''){
+							 	  		
+			 	  						$(this).parent().children('.error').css("display", "block");
+		 								$(this).parent().children('.error').text("Please select Sequence ");
+		 								isValid = false;
+		 								return false ;
+		 								
+							 	  	}else{
+						   				$(this).parent().children('.error').css("display", "none");
+						   				isValid = true;
+				    						return true ;
+							   		}		
+					   		}
+
+		
+				});
+		 return isValid; 
+	
+			}
+			
+  
+  function checkCity(city_category){
+				var isValid = true;		
+				
+			   $(city_category).each(function( index ) {
+			   
+			  			
+						var city_category = $(this).val();		
+						var parentvalue = $(this).parent().parent().next('div').find('select').val() ;	
+								
+									if( parentvalue != "") {  
+									
+							 	  		if(city_category ==''){
+							 	  		
+			 	  						$(this).parent().children('.error').css("display", "block");
+		 								$(this).parent().children('.error').text("Please select City ");
+		 								isValid = false;
+		 								return false ;
+		 								
+							 	  	}else{
+						   				$(this).parent().children('.error').css("display", "none");
+						   				isValid = true;
+				    						return true ;
+							   		}		
+					   		}
+
+		
+				});
+		 return isValid; 
+	
+			}
+
+			function checkDuplicates()
+{
+	var selectedcitylist = [];   
+     $.each($(".city_category"), function(){ 
+ 		var cityName = $(this).find(":selected").val();
+		selectedcitylist.push(cityName);
+       })
+
+
+var sorted_arr = selectedcitylist.slice().sort(); 
+var results = [];
+for (var i = 0; i < selectedcitylist.length - 1; i++) {
+    if (sorted_arr[i + 1] == sorted_arr[i]) {
+        results.push(sorted_arr[i]);
+    }
+}
+if(results.length>=1)
+{
+
+    	$("#city_error").css("display", "block");
+       $("#city_error").html("Please select a different city");
+       return false;
+}
+else
+{
+
+    $("#city_error").css("display", "none");
+    return true;
+
+}
+}
+            </script>
+            
+                 
+        </body>
+
+    </html>
